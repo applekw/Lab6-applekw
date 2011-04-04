@@ -41,8 +41,8 @@ public class PrintBalance {
 		System.out.println(getPoliteSaying(messages) + name);
 
 		// print today's date, balance and bid goodbye
-		System.out.println(getStatement(messages) + processDate(PrintBalance.currentLocale));
-		System.out.println(getDebt(messages) + processCurrency(PrintBalance.currentLocale));
+		System.out.println(getStatement(messages) + processDate());
+		System.out.println(getDebt(messages) + processCurrency());
 		System.out.println(getFarewell(messages));
 	}
 
@@ -70,16 +70,16 @@ public class PrintBalance {
 		return messages.getString("farewell");
 	}
 
-	public static String processCurrency(Locale currentLocale) {
+	public static String processCurrency() {
 		NumberFormat currencyInstance = NumberFormat
-				.getCurrencyInstance(currentLocale);
+				.getCurrencyInstance(PrintBalance.currentLocale);
 		return currencyInstance.format(9876543.21);
 
 	}
 
-	public static String processDate(Locale currentLocale) {
+	public static String processDate() {
 		DateFormat dtInstance = DateFormat.getDateTimeInstance(0, 0,
-				currentLocale);
+				PrintBalance.currentLocale);
 		return dtInstance.format(new Date());
 	}
 
